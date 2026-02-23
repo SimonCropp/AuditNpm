@@ -1,12 +1,14 @@
 static class AuditNpmRunner
 {
+    internal static readonly string NpmFileName = OperatingSystem.IsWindows() ? "npm.cmd" : "npm";
+
     public static async Task<string> Run(string directory)
     {
         Log.Information("Running npm audit in {Directory}", directory);
 
         var startInfo = new ProcessStartInfo
         {
-            FileName = "npm",
+            FileName = NpmFileName,
             Arguments = "audit --json",
             WorkingDirectory = directory,
             RedirectStandardOutput = true,

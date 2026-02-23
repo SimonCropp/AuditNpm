@@ -9,7 +9,7 @@ class IntegrationTests
             using var process = Process.Start(
                 new ProcessStartInfo
                 {
-                    FileName = "npm",
+                    FileName = AuditNpmRunner.NpmFileName,
                     Arguments = "--version",
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
