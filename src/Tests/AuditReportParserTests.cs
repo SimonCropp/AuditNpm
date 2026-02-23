@@ -23,4 +23,22 @@ class AuditReportParserTests
 
         return Verify(report);
     }
+
+    [Test]
+    public Task GhsaFallbackAndEdgeCases()
+    {
+        var json = LoadScenario("ghsa-fallback-and-edge-cases.json");
+        var report = AuditReportParser.Parse(json);
+
+        return Verify(report);
+    }
+
+    [Test]
+    public Task MissingMetadata()
+    {
+        var json = LoadScenario("missing-metadata.json");
+        var report = AuditReportParser.Parse(json);
+
+        return Verify(report);
+    }
 }

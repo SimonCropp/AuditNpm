@@ -1,0 +1,32 @@
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {
+    "qs": {
+      "name": "qs",
+      "severity": "high",
+      "isDirect": true,
+      "via": [
+        {
+          "source": 3000,
+          "name": "qs",
+          "dependency": "qs",
+          "title": "Prototype Pollution in qs",
+          "url": "https://github.com/advisories/GHSA-hrpp-h998-j3pp",
+          "severity": "high",
+          "cwe": ["CWE-1321"],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+          },
+          "range": "<6.0.4",
+          "github_advisory_id": "GHSA-hrpp-h998-j3pp",
+          "cves": ["CVE-2022-24999"]
+        }
+      ],
+      "effects": [],
+      "range": "<6.0.4",
+      "nodes": ["node_modules/qs"],
+      "fixAvailable": true
+    }
+  }
+}

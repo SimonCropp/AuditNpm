@@ -40,7 +40,8 @@ static class AuditReportAnalyzer
                 .ToList();
 
             // A vuln is ignored only if ALL its CVE IDs are in the ignore set
-            if (allCveIds.Count != 0 && matchedIgnores.Count == allCveIds.Count)
+            if (allCveIds.Count != 0 &&
+                matchedIgnores.Count == allCveIds.Count)
             {
                 ignored.Add(new(name, vuln, matchedIgnores));
             }

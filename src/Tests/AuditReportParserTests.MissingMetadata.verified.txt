@@ -1,0 +1,24 @@
+{
+  Vulnerabilities: {
+    qs: {
+      Name: qs,
+      Severity: high,
+      IsDirect: true,
+      Advisories: [
+        {
+          GhsaId: GHSA-hrpp-h998-j3pp,
+          CveIds: [
+            CVE-2022-24999
+          ],
+          Title: Prototype Pollution in qs,
+          Url: https://github.com/advisories/GHSA-hrpp-h998-j3pp,
+          Severity: high,
+          Range: <6.0.4
+        }
+      ],
+      Range: <6.0.4,
+      FixAvailable: true
+    }
+  },
+  Metadata: {}
+}
