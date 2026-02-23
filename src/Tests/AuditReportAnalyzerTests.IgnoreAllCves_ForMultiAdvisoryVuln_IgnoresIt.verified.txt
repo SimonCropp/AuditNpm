@@ -1,0 +1,112 @@
+﻿{
+  Reported: [
+    {
+      Name: lodash,
+      Vulnerability: {
+        Name: lodash,
+        Severity: critical,
+        IsDirect: true,
+        Advisories: [
+          {
+            GhsaId: GHSA-jf85-cpcp-j695,
+            CveIds: [
+              CVE-2021-23337
+            ],
+            Title: Prototype Pollution in lodash,
+            Url: https://github.com/advisories/GHSA-jf85-cpcp-j695,
+            Severity: critical,
+            Range: <4.17.21
+          }
+        ],
+        Range: <=4.17.20,
+        FixAvailable: true
+      }
+    },
+    {
+      Name: minimist,
+      Vulnerability: {
+        Name: minimist,
+        Severity: moderate,
+        IsDirect: false,
+        Advisories: [
+          {
+            GhsaId: GHSA-xvch-5gv4-984h,
+            CveIds: [
+              CVE-2021-44906
+            ],
+            Title: Prototype Pollution in minimist,
+            Url: https://github.com/advisories/GHSA-xvch-5gv4-984h,
+            Severity: moderate,
+            Range: <1.2.6
+          }
+        ],
+        Effects: [
+          mkdirp
+        ],
+        Range: 0.0.1 - 1.2.5,
+        FixAvailable: true
+      }
+    },
+    {
+      Name: express,
+      Vulnerability: {
+        Name: express,
+        Severity: low,
+        IsDirect: true,
+        Advisories: [
+          {
+            GhsaId: GHSA-42xw-2xvc-qx8m,
+            CveIds: [
+              CVE-2024-29041
+            ],
+            Title: Open Redirect in express,
+            Url: https://github.com/advisories/GHSA-42xw-2xvc-qx8m,
+            Severity: low,
+            Range: <4.19.2
+          }
+        ],
+        Range: <4.19.2,
+        FixAvailable: true
+      }
+    }
+  ],
+  Ignored: [
+    {
+      Name: webpack-dev-server,
+      Vulnerability: {
+        Name: webpack-dev-server,
+        Severity: high,
+        IsDirect: true,
+        Advisories: [
+          {
+            GhsaId: GHSA-c82x-5cv5-4gqf,
+            CveIds: [
+              CVE-2018-14732
+            ],
+            Title: Missing Origin Validation in webpack-dev-server,
+            Url: https://github.com/advisories/GHSA-c82x-5cv5-4gqf,
+            Severity: high,
+            Range: <3.1.11
+          },
+          {
+            GhsaId: GHSA-h9rv-jmmf-4pgx,
+            CveIds: [
+              CVE-2018-14733
+            ],
+            Title: DNS Rebinding in webpack-dev-server,
+            Url: https://github.com/advisories/GHSA-h9rv-jmmf-4pgx,
+            Severity: moderate,
+            Range: <3.1.11
+          }
+        ],
+        Range: <=3.1.10,
+        FixAvailable: false
+      },
+      MatchedCveIds: [
+        CVE-2018-14732,
+        CVE-2018-14733
+      ]
+    }
+  ],
+  HasFailures: true
+}

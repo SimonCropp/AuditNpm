@@ -1,0 +1,6 @@
+﻿{
+  Severity: high,
+  Ignore: [
+    CVE-2021-23337
+  ]
+}

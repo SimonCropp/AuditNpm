@@ -1,0 +1,27 @@
+﻿{
+  Reported: [
+    {
+      Name: lodash,
+      Vulnerability: {
+        Name: lodash,
+        Severity: critical,
+        IsDirect: true,
+        Advisories: [
+          {
+            GhsaId: GHSA-jf85-cpcp-j695,
+            CveIds: [
+              CVE-2021-23337
+            ],
+            Title: Prototype Pollution in lodash,
+            Url: https://github.com/advisories/GHSA-jf85-cpcp-j695,
+            Severity: critical,
+            Range: <4.17.21
+          }
+        ],
+        Range: <=4.17.20,
+        FixAvailable: true
+      }
+    }
+  ],
+  HasFailures: true
+}

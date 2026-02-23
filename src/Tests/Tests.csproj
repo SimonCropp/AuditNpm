@@ -5,7 +5,12 @@
     <RootNamespace>testing</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="DiffEngine" />
+    <PackageReference Include="EmptyFiles" />
+    <PackageReference Include="SimpleInfoName" />
     <PackageReference Include="TUnit" />
+    <PackageReference Include="Verify" />
+    <PackageReference Include="Verify.TUnit" />
     <ProjectReference Include="..\AuditNpm\AuditNpm.csproj" />
   </ItemGroup>
   <ItemGroup>
