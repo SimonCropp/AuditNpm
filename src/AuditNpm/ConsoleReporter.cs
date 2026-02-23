@@ -15,13 +15,12 @@ static class ConsoleReporter
         {
             Log.Information("");
             Log.Information("Ignored vulnerabilities ({Count}):", result.Ignored.Count);
-            foreach (var item in result.Ignored)
+            foreach (var (name, vuln, matchedCveIds) in result.Ignored)
             {
-                var vuln = item.Vulnerability;
-                var cveList = string.Join(", ", item.MatchedCveIds);
+                var cveList = string.Join(", ", matchedCveIds);
                 Log.Information("  {Severity} | {Name} | {Range} | ignored: {CveIds}",
                     vuln.Severity.ToUpperInvariant(),
-                    item.Name,
+                    name,
                     vuln.Range,
                     cveList);
             }
@@ -36,9 +35,8 @@ static class ConsoleReporter
                 .OrderByDescending(r => severityOrder.GetValueOrDefault(r.Vulnerability.Severity, 0))
                 .ToList();
 
-            foreach (var item in sorted)
+            foreach (var (name, vuln) in sorted)
             {
-                var vuln = item.Vulnerability;
                 var directLabel = vuln.IsDirect ? "direct" : "transitive";
                 var fixLabel = vuln.FixAvailable switch
                 {
@@ -65,7 +63,7 @@ static class ConsoleReporter
 
                 Log.Information("  {Severity} | {Name} | {DirectLabel} | {FixLabel} | {Range} | {Ids}",
                     vuln.Severity.ToUpperInvariant(),
-                    item.Name,
+                    name,
                     directLabel,
                     fixLabel,
                     vuln.Range,

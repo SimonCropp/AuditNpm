@@ -1,5 +1,3 @@
-namespace testing;
-
 class ConfigLoaderTests
 {
     [Test]

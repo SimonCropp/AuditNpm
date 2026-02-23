@@ -1,5 +1,3 @@
-namespace testing;
-
 class IntegrationTests
 {
     static readonly bool npmAvailable = CheckNpmAvailable();
@@ -8,15 +6,16 @@ class IntegrationTests
     {
         try
         {
-            using var process = Process.Start(new ProcessStartInfo
-            {
-                FileName = "npm",
-                Arguments = "--version",
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                UseShellExecute = false,
-                CreateNoWindow = true,
-            });
+            using var process = Process.Start(
+                new ProcessStartInfo
+                {
+                    FileName = "npm",
+                    Arguments = "--version",
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                });
 
             if (process == null)
             {

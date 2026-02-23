@@ -1,5 +1,3 @@
-namespace testing;
-
 class AuditReportAnalyzerTests
 {
     static string LoadScenario(string name)
