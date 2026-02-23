@@ -6,16 +6,7 @@ class IntegrationTests
     {
         try
         {
-            using var process = Process.Start(
-                new ProcessStartInfo
-                {
-                    FileName = AuditNpmRunner.NpmFileName,
-                    Arguments = "--version",
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    UseShellExecute = false,
-                    CreateNoWindow = true,
-                });
+            using var process = Process.Start(AuditNpmRunner.CreateStartInfo("--version"));
 
             if (process == null)
             {
