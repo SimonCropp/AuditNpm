@@ -1,15 +1,28 @@
 static class AuditNpmRunner
 {
-    internal static ProcessStartInfo CreateStartInfo(string arguments) =>
-        new()
+    internal static ProcessStartInfo CreateStartInfo(string arguments)
+    {
+        var startInfo = new ProcessStartInfo
         {
-            FileName = "npm",
-            Arguments = arguments,
             RedirectStandardOutput = true,
             RedirectStandardError = true,
             UseShellExecute = false,
             CreateNoWindow = true,
         };
+
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        {
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = $"/c npm {arguments}";
+        }
+        else
+        {
+            startInfo.FileName = "npm";
+            startInfo.Arguments = arguments;
+        }
+
+        return startInfo;
+    }
 
     public static async Task<string> Run(string directory)
     {

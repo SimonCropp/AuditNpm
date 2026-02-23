@@ -37,7 +37,9 @@ class IntegrationTests
 
         using var temp = new TempDirectory();
 
-        File.WriteAllText(Path.Combine(temp, "package.json"), """
+        await File.WriteAllTextAsync(
+            Path.Combine(temp, "package.json"),
+            """
             {
               "name": "clean-test",
               "version": "1.0.0",
@@ -46,7 +48,9 @@ class IntegrationTests
             }
             """);
 
-        File.WriteAllText(Path.Combine(temp, "package-lock.json"), """
+        await File.WriteAllTextAsync(
+            Path.Combine(temp, "package-lock.json"),
+            """
             {
               "name": "clean-test",
               "version": "1.0.0",
@@ -77,7 +81,9 @@ class IntegrationTests
 
         using var temp = new TempDirectory();
 
-        File.WriteAllText(Path.Combine(temp, "package.json"), """
+        await File.WriteAllTextAsync(
+            Path.Combine(temp, "package.json"),
+            """
             {
               "name": "clean-test",
               "version": "1.0.0",
@@ -85,7 +91,9 @@ class IntegrationTests
             }
             """);
 
-        File.WriteAllText(Path.Combine(temp, "package-lock.json"), """
+        await File.WriteAllTextAsync(
+            Path.Combine(temp, "package-lock.json"),
+            """
             {
               "name": "clean-test",
               "version": "1.0.0",
@@ -100,14 +108,19 @@ class IntegrationTests
             }
             """);
 
-        File.WriteAllText(Path.Combine(temp, "audit-npm.config.json"), """
+        await File.WriteAllTextAsync(
+            Path.Combine(temp, "audit-npm.config.json"),
+            """
             {
               "severity": "low",
               "ignore": []
             }
             """);
 
-        var options = new Options { TargetDirectory = temp };
+        var options = new Options
+        {
+            TargetDirectory = temp
+        };
         var config = ConfigLoader.Load(temp, options);
 
         await Assert.That(config.Severity).IsEqualTo("low");
