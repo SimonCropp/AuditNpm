@@ -3,6 +3,9 @@ environment:
   DOTNET_NOLOGO: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  nodejs_version: "22"
+install:
+- ps: Install-Product node $env:nodejs_version
 skip_commits:
   message: /doco|Merge pull request.*/
 build_script:
