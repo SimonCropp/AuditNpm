@@ -2,7 +2,9 @@ namespace testing;
 
 class IntegrationTests
 {
-    static bool IsNpmAvailable()
+    static readonly bool npmAvailable = CheckNpmAvailable();
+
+    static bool CheckNpmAvailable()
     {
         try
         {
@@ -32,7 +34,7 @@ class IntegrationTests
 
     static void RequireNpm()
     {
-        if (!IsNpmAvailable())
+        if (!npmAvailable)
         {
             Skip.Test("npm is not installed");
         }

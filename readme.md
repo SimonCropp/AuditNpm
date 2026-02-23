@@ -1,12 +1,17 @@
-# AuditNpm
+# <img src="/src/icon.png" height="30px"> AuditNpm
+
+[![Build status](https://img.shields.io/appveyor/build/SimonCropp/AuditNpm)](https://ci.appveyor.com/project/SimonCropp/AuditNpm)
+[![NuGet Status](https://img.shields.io/nuget/v/AuditNpm.svg)](https://www.nuget.org/packages/AuditNpm/)
 
 A .NET global tool that runs `npm audit`, parses the JSON output, and exits with a non-zero code when vulnerabilities are found at or above a configurable severity threshold.
+
 
 ## Install
 
 ```
 dotnet tool install -g AuditNpm
 ```
+
 
 ## Usage
 
@@ -20,6 +25,7 @@ audit-npm [directory] [options]
 | `-s, --severity` | Threshold: `critical`, `high`, `moderate`, `low` (default: `moderate`) |
 | `-i, --ignore` | Comma-separated CVE IDs to ignore |
 | `-c, --config` | Config file path (default: `audit-npm.config.json` in target directory) |
+
 
 ### Examples
 
@@ -64,6 +70,7 @@ JSON comments and trailing commas are supported.
 
 CLI `--severity` overrides the config file value. CLI `--ignore` is additive with the config file list.
 
+
 ## Exit codes
 
 | Code | Meaning |
@@ -71,9 +78,11 @@ CLI `--severity` overrides the config file value. CLI `--ignore` is additive wit
 | `0` | No vulnerabilities found above the severity threshold (or all were ignored) |
 | `1` | One or more unignored vulnerabilities found at or above the threshold |
 
+
 ## Ignoring vulnerabilities
 
 Use CVE IDs to ignore known vulnerabilities. A vulnerability is only ignored if **all** of its associated CVE IDs are in the ignore list. If a package has multiple advisories and only some are ignored, it will still be reported.
+
 
 ## Building from source
 
@@ -83,3 +92,9 @@ Requires .NET 10 SDK.
 dotnet build src --configuration Release
 dotnet test --solution src/AuditNpm.slnx
 ```
+
+
+## Icon
+
+[Audit](https://thenounproject.com/icon/audit-8168141/) designed by [Muhammad Adam](https://thenounproject.com/creator/PixelAdam/) from [The Noun Project](https://thenounproject.com/).
+
