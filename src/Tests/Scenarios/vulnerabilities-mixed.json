@@ -1,0 +1,163 @@
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {
+    "lodash": {
+      "name": "lodash",
+      "severity": "critical",
+      "isDirect": true,
+      "via": [
+        {
+          "source": 1065,
+          "name": "lodash",
+          "dependency": "lodash",
+          "title": "Prototype Pollution in lodash",
+          "url": "https://github.com/advisories/GHSA-jf85-cpcp-j695",
+          "severity": "critical",
+          "cwe": ["CWE-1321"],
+          "cvss": {
+            "score": 7.4,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H"
+          },
+          "range": "<4.17.21",
+          "github_advisory_id": "GHSA-jf85-cpcp-j695",
+          "cves": ["CVE-2021-23337"]
+        }
+      ],
+      "effects": [],
+      "range": "<=4.17.20",
+      "nodes": ["node_modules/lodash"],
+      "fixAvailable": true
+    },
+    "minimist": {
+      "name": "minimist",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1179,
+          "name": "minimist",
+          "dependency": "minimist",
+          "title": "Prototype Pollution in minimist",
+          "url": "https://github.com/advisories/GHSA-xvch-5gv4-984h",
+          "severity": "moderate",
+          "cwe": ["CWE-1321"],
+          "cvss": {
+            "score": 5.6,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:H"
+          },
+          "range": "<1.2.6",
+          "github_advisory_id": "GHSA-xvch-5gv4-984h",
+          "cves": ["CVE-2021-44906"]
+        }
+      ],
+      "effects": ["mkdirp"],
+      "range": "0.0.1 - 1.2.5",
+      "nodes": ["node_modules/minimist"],
+      "fixAvailable": true
+    },
+    "mkdirp": {
+      "name": "mkdirp",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "minimist"
+      ],
+      "effects": [],
+      "range": "0.4.1 - 0.5.1",
+      "nodes": ["node_modules/mkdirp"],
+      "fixAvailable": true
+    },
+    "express": {
+      "name": "express",
+      "severity": "low",
+      "isDirect": true,
+      "via": [
+        {
+          "source": 1234,
+          "name": "express",
+          "dependency": "express",
+          "title": "Open Redirect in express",
+          "url": "https://github.com/advisories/GHSA-42xw-2xvc-qx8m",
+          "severity": "low",
+          "cwe": ["CWE-601"],
+          "cvss": {
+            "score": 4.7,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N"
+          },
+          "range": "<4.19.2",
+          "github_advisory_id": "GHSA-42xw-2xvc-qx8m",
+          "cves": ["CVE-2024-29041"]
+        }
+      ],
+      "effects": [],
+      "range": "<4.19.2",
+      "nodes": ["node_modules/express"],
+      "fixAvailable": {
+        "name": "express",
+        "version": "4.19.2",
+        "isSemVerMajor": false
+      }
+    },
+    "webpack-dev-server": {
+      "name": "webpack-dev-server",
+      "severity": "high",
+      "isDirect": true,
+      "via": [
+        {
+          "source": 1500,
+          "name": "webpack-dev-server",
+          "dependency": "webpack-dev-server",
+          "title": "Missing Origin Validation in webpack-dev-server",
+          "url": "https://github.com/advisories/GHSA-c82x-5cv5-4gqf",
+          "severity": "high",
+          "cwe": ["CWE-346"],
+          "cvss": {
+            "score": 9.8,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+          },
+          "range": "<3.1.11",
+          "github_advisory_id": "GHSA-c82x-5cv5-4gqf",
+          "cves": ["CVE-2018-14732"]
+        },
+        {
+          "source": 1501,
+          "name": "webpack-dev-server",
+          "dependency": "webpack-dev-server",
+          "title": "DNS Rebinding in webpack-dev-server",
+          "url": "https://github.com/advisories/GHSA-h9rv-jmmf-4pgx",
+          "severity": "moderate",
+          "cwe": ["CWE-350"],
+          "cvss": {
+            "score": 5.4,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:N"
+          },
+          "range": "<3.1.11",
+          "github_advisory_id": "GHSA-h9rv-jmmf-4pgx",
+          "cves": ["CVE-2018-14733"]
+        }
+      ],
+      "effects": [],
+      "range": "<=3.1.10",
+      "nodes": ["node_modules/webpack-dev-server"],
+      "fixAvailable": false
+    }
+  },
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 1,
+      "moderate": 2,
+      "high": 1,
+      "critical": 1,
+      "total": 5
+    },
+    "dependencies": {
+      "prod": 50,
+      "dev": 100,
+      "optional": 0,
+      "peer": 0,
+      "peerOptional": 0,
+      "total": 150
+    }
+  }
+}
