@@ -1,0 +1,13 @@
+{
+  Severity: moderate,
+  Ignore: [
+    CVE-2024-29041,
+    CVE-2021-23337
+  ],
+  ExpiredIgnores: [
+    {
+      Id: CVE-2020-12345,
+      Until: Date_1
+    }
+  ]
+}

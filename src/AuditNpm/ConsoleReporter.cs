@@ -9,8 +9,18 @@ static class ConsoleReporter
         ["info"] = 0,
     };
 
-    public static void Report(AnalysisResult result)
+    public static void Report(AnalysisResult result, IReadOnlyList<ExpiredIgnore> expiredIgnores)
     {
+        if (expiredIgnores.Count != 0)
+        {
+            Log.Information("");
+            Log.Information("Expired ignores (no longer suppressed):");
+            foreach (var expired in expiredIgnores)
+            {
+                Log.Information("  {Id} (expired {Until})", expired.Id, expired.Until);
+            }
+        }
+
         if (result.Ignored.Count != 0)
         {
             Log.Information("");

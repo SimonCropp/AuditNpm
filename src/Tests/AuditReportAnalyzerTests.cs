@@ -12,7 +12,7 @@ class AuditReportAnalyzerTests
     public Task DefaultThreshold_ReportsModerateAndAbove()
     {
         var report = ParseMixed();
-        var config = new AuditConfig("moderate", []);
+        var config = new AuditConfig("moderate", [], []);
 
         return Verify(AuditReportAnalyzer.Analyze(report, config));
     }
@@ -21,7 +21,7 @@ class AuditReportAnalyzerTests
     public Task CriticalThreshold_ReportsOnlyCritical()
     {
         var report = ParseMixed();
-        var config = new AuditConfig("critical", []);
+        var config = new AuditConfig("critical", [], []);
 
         return Verify(AuditReportAnalyzer.Analyze(report, config));
     }
@@ -30,7 +30,7 @@ class AuditReportAnalyzerTests
     public Task LowThreshold_ReportsAll()
     {
         var report = ParseMixed();
-        var config = new AuditConfig("low", []);
+        var config = new AuditConfig("low", [], []);
 
         return Verify(AuditReportAnalyzer.Analyze(report, config));
     }
@@ -39,7 +39,7 @@ class AuditReportAnalyzerTests
     public Task IgnoreSingleCve_IgnoresMatchingVuln()
     {
         var report = ParseMixed();
-        var config = new AuditConfig("low", ["CVE-2024-29041"]);
+        var config = new AuditConfig("low", ["CVE-2024-29041"], []);
 
         return Verify(AuditReportAnalyzer.Analyze(report, config));
     }
@@ -48,7 +48,7 @@ class AuditReportAnalyzerTests
     public Task IgnoreAllCves_ForMultiAdvisoryVuln_IgnoresIt()
     {
         var report = ParseMixed();
-        var config = new AuditConfig("low", ["CVE-2018-14732", "CVE-2018-14733"]);
+        var config = new AuditConfig("low", ["CVE-2018-14732", "CVE-2018-14733"], []);
 
         return Verify(AuditReportAnalyzer.Analyze(report, config));
     }
@@ -57,7 +57,7 @@ class AuditReportAnalyzerTests
     public Task IgnorePartialCves_ForMultiAdvisoryVuln_StillReportsIt()
     {
         var report = ParseMixed();
-        var config = new AuditConfig("low", ["CVE-2018-14732"]);
+        var config = new AuditConfig("low", ["CVE-2018-14732"], []);
 
         return Verify(AuditReportAnalyzer.Analyze(report, config));
     }
@@ -66,7 +66,7 @@ class AuditReportAnalyzerTests
     public Task CleanAudit_NoFailures()
     {
         var report = AuditReportParser.Parse(LoadScenario("clean-audit.json"));
-        var config = new AuditConfig("moderate", []);
+        var config = new AuditConfig("moderate", [], []);
 
         return Verify(AuditReportAnalyzer.Analyze(report, config));
     }

@@ -66,6 +66,22 @@ Create an `audit-npm.config.json` in your project directory:
 }
 ```
 
+Ignore entries can also use an object format with an `until` date. The CVE will be ignored until the specified date, after which it will be reported again:
+
+```json
+{
+  "ignore": [
+    "CVE-2024-29041",
+    {
+      "id": "CVE-2021-23337",
+      "until": "2025-06-01"
+    }
+  ]
+}
+```
+
+When the `until` date has passed, the tool will log that the ignore has expired and the CVE will no longer be suppressed.
+
 JSON comments and trailing commas are supported.
 
 CLI `--severity` overrides the config file value. CLI `--ignore` is additive with the config file list.

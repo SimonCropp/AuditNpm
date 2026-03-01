@@ -67,7 +67,7 @@ class IntegrationTests
 
         var json = await AuditNpmRunner.Run(temp);
         var report = AuditReportParser.Parse(json);
-        var config = new AuditConfig("moderate", []);
+        var config = new AuditConfig("moderate", [], []);
         var result = AuditReportAnalyzer.Analyze(report, config);
 
         await Assert.That(result.HasFailures).IsFalse();

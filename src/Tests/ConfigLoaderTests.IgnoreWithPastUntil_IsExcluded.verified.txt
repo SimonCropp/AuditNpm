@@ -1,0 +1,9 @@
+{
+  Severity: moderate,
+  ExpiredIgnores: [
+    {
+      Id: CVE-2021-23337,
+      Until: Date_1
+    }
+  ]
+}

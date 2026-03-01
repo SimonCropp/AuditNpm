@@ -8,10 +8,14 @@ static class ConfigLoader
         AllowTrailingCommas = true,
     };
 
-    public static AuditConfig Load(string directory, Options options)
+    public static AuditConfig Load(string directory, Options options) =>
+        Load(directory, options, Date.FromDateTime(DateTime.Today));
+
+    internal static AuditConfig Load(string directory, Options options, Date today)
     {
         var severity = "moderate";
         var ignore = new HashSet<string>(StringComparer.Ordinal);
+        var expiredIgnores = new List<ExpiredIgnore>();
 
         var configPath = !string.IsNullOrEmpty(options.ConfigFile)
             ? options.ConfigFile
@@ -37,10 +41,38 @@ static class ConfigLoader
             {
                 foreach (var item in ignoreElement.EnumerateArray())
                 {
-                    var id = item.GetString();
-                    if (!string.IsNullOrEmpty(id))
+                    if (item.ValueKind == JsonValueKind.String)
                     {
-                        ignore.Add(id);
+                        var id = item.GetString();
+                        if (!string.IsNullOrEmpty(id))
+                        {
+                            ignore.Add(id);
+                        }
+                    }
+                    else if (item.ValueKind == JsonValueKind.Object)
+                    {
+                        var id = item.GetProperty("id").GetString();
+                        if (string.IsNullOrEmpty(id))
+                        {
+                            continue;
+                        }
+
+                        if (item.TryGetProperty("until", out var untilElement))
+                        {
+                            var until = Date.Parse(untilElement.GetString()!);
+                            if (until >= today)
+                            {
+                                ignore.Add(id);
+                            }
+                            else
+                            {
+                                expiredIgnores.Add(new(id, until));
+                            }
+                        }
+                        else
+                        {
+                            ignore.Add(id);
+                        }
                     }
                 }
             }
@@ -64,6 +96,6 @@ static class ConfigLoader
             }
         }
 
-        return new(severity, ignore);
+        return new(severity, ignore, expiredIgnores);
     }
 }

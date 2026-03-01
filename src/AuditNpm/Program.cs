@@ -24,7 +24,7 @@ static async Task<int> Inner(Options options)
     var json = await AuditNpmRunner.Run(directory);
     var report = AuditReportParser.Parse(json);
     var result = AuditReportAnalyzer.Analyze(report, config);
-    ConsoleReporter.Report(result);
+    ConsoleReporter.Report(result, config.ExpiredIgnores);
 
     return result.HasFailures ? 1 : 0;
 }

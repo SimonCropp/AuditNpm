@@ -1,1 +1,1 @@
-record AuditConfig(string Severity, HashSet<string> Ignore);
+record AuditConfig(string Severity, HashSet<string> Ignore, List<ExpiredIgnore> ExpiredIgnores);
