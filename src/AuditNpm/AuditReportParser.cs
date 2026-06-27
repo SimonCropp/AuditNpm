@@ -154,10 +154,9 @@ static class AuditReportParser
                 }
             }
 
-            if (severityCounts.TryGetValue("total", out var reportedTotal))
+            if (severityCounts.Remove("total", out var reportedTotal))
             {
                 total = reportedTotal;
-                severityCounts.Remove("total");
             }
         }
 
