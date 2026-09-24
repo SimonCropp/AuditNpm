@@ -1,6 +1,6 @@
 # <img src="/src/icon.png" height="30px"> AuditNpm
 
-[![Build status](https://img.shields.io/appveyor/build/SimonCropp/AuditNpm)](https://ci.appveyor.com/project/SimonCropp/AuditNpm)
+[![Build status](https://github.com/SimonCropp/AuditNpm/actions/workflows/build.yml/badge.svg)](https://github.com/SimonCropp/AuditNpm/actions/workflows/build.yml)
 [![NuGet Status](https://img.shields.io/nuget/v/AuditNpm.svg)](https://www.nuget.org/packages/AuditNpm/)
 
 A .NET global tool that runs `npm audit`, parses the JSON output, and exits with a non-zero code when vulnerabilities are found at or above a configurable severity threshold.
