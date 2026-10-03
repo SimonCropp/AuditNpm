@@ -2,7 +2,7 @@ class AuditReportAnalyzerTests
 {
     static string LoadScenario(string name)
     {
-        var path = Path.Combine(AppContext.BaseDirectory, "Scenarios", name);
+        var path = Path.Combine(AppContext.BaseDirectory, ProjectFiles.Scenarios, name);
         return File.ReadAllText(path);
     }
 
